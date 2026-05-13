@@ -1,0 +1,69 @@
+    {% load static %}
+    <div class="menu" id="smenu">
+        <span class ="close" onclick="hideMenu()">&times;</span>
+        
+        <h2>{{request.user.username}}</h2>
+        <ul>
+            <li> <a href="{% url 'userProfile' %}"><i class='fas fa-user-circle' style='font-size:16px'></i> Profile</a></li>
+            <li> <a href="#" onclick="showNotification()"><i class="fa fa-bell-o"></i> Notification ({{ notification|length }})</a></li>
+            <li> <a href="{% url 'profileUpdate' %}"><i class='fas fa-lock'></i> Profile Update</a></li>
+            <hr>
+            <li> <a href="{% url 'userPost' %}"><i class="fa fa-calendar"></i> All Schedule ({{ schedule|length }}) </a></li>
+            <li> <a href="#"><i class="fa fa-money"></i> Payment</a></li>
+            <li> <a href="{% url 'readHistory' %}"><i class="fa fa-history"></i> History ({{ history|length }})</a></li>
+            <li> <a href="#"><i class="fa fa-home"></i> Saved Address</a></li>
+            <li> <a href="#"><i class='fas fa-user-shield' style='font-size:15px;color:white'></i> Privacy</a></li>
+            <li> <a href="#"><i class="fa fa-bookmark-o"></i> Bookmark</a></li>
+            <li> <a href="#"><i class="fa fa-globe"></i> Language</a></li>
+            <hr>
+            <li> <a href="{% url 'help' %}"><i class='far fa-question-circle'></i> Help</a></li>
+            <li> <a href="{% url 'settings' %}"><i class="fa fa-cog"></i> Settings</a></li>
+            <li> <a href="{% url 'logOutUser' %}"><i class="fa fa-sign-out"></i> Log out</a></li>
+
+        </ul>
+        
+    </div>
+    <div class="notification" id="nmenu">
+        <span class ="close" onclick="hideNotification()">&times;</span>
+        <h2>Notifications</h2>
+        <ul> 
+            {% for n in notification %}
+                {% if n.status == 'canceled' %}
+                    <li> 
+                    <a href="#"> {{n.time}} | Driver: {{n.driver}}<br> {{n.type}} has been canceled </a>
+                    </li>
+                {% else %}
+                    <li> 
+                    <a href="#"> {{n.time}} | Driver: {{n.driver}}<br> {{n.driver}} accepted your request </a>
+                    </li>
+                {% endif %}
+            {% endfor %} 
+            
+        </ul>
+        <ul>
+        <li><a href="{% url 'deleteAllNotification' %}" class="reaButton"> clear all </a></li>
+            
+        </ul>
+        
+        
+    </div>
+    <script type="text/javascript">
+        function showMenu(){
+            var m=document.getElementById('smenu');
+            m.classList.add('showMenu');
+        }
+        function hideMenu(){
+            var m=document.getElementById('smenu');
+            m.classList.remove('showMenu');
+        }
+        function hideNotification(){
+            showMenu();
+            var n=document.getElementById('nmenu');
+            n.classList.remove('showMenu');
+        }
+        function showNotification(){
+            hideMenu();
+            var m=document.getElementById('nmenu');
+            m.classList.add('showMenu');
+        }
+    </script>
