@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class SchedulesConfig(AppConfig):
-    name = 'schedules'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "schedules"
