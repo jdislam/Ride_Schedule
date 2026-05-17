@@ -1,0 +1,90 @@
+*{
+    margin : 0px;
+    font-family: sans-serif;
+    padding : 0px;
+}
+.ticon{
+    font-size: 40px;
+    margin :10px;
+    cursor: pointer;
+
+}
+.menu , .notification{
+    display: block;
+    width: 25%;
+    height: 100vh;
+    background-color: black;
+    position: fixed;
+    top: 0px;
+    left: 100%;
+    z-index:5;
+    transform: translate(0% , 0%);
+    transition: 1s;
+    float: right;
+    opacity: 0.8;
+
+}
+.showMenu{
+    left:75%;
+}
+.menu ul{
+    list-style: none;
+
+    position: relative;
+    left:1px;
+    
+}
+.notification ul{
+    list-style: none;
+    position: relative;
+    left:1px;
+    
+}
+.notification ul li a{
+    border-radius:10px;
+    background-color: rgb(39, 39, 39);
+    margin: 10px;
+
+}
+.notification ul li a:hover{
+    
+    background-color: rgb(78, 78, 78);
+
+}
+.menu ul li:hover{
+    background-color:  rgb(78, 78, 78);
+    border-color: white;
+    border-width:1px;
+    border-style:solid;
+
+}
+.menu h2, .notification h2{
+    color: white;
+    padding: 25px;
+}
+
+.menu ul li a ,
+.notification ul li a
+{
+    display: block;
+    padding: 10px 15px;
+    color :white;
+    text-decoration: none;
+}
+
+.close{
+    font-size: 40px ;
+    color:white ;
+    right: 10px;
+    cursor: pointer;
+    position: absolute;
+
+}
+
+
+.close:hover {
+    color:red;
+}
+.smenu , .nmenu{
+    left: 0%;
+}

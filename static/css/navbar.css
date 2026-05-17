@@ -1,0 +1,156 @@
+* {
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+
+.main {
+    display: flex;
+    position: sticky;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    font-size: 18px;
+    align-items: center;
+    box-shadow: 1px 1px 1px hsla(0, 0%, 0%, 0.5);
+    background-color: white;
+
+}
+
+.logoN {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bolder;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.mid ul {
+    display: flex;
+    list-style: none;
+
+
+}
+
+.mid ul li a {
+    padding: 8px;
+    cursor: pointer;
+    padding-bottom: 22px;
+    color: black;
+    border-radius: 0px;
+    transition: 0.5s;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.mid ul li a:hover {
+    color: #007084;
+
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    padding-right: 25px;
+}
+
+.profile div span {
+    padding-left: 10px;
+    padding-right: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.profile div span:hover {
+    color: rgb(8, 120, 151);
+}
+
+.profile img {
+    padding: 0px;
+    border-color: rgb(45, 183, 218);
+    border-style: groove;
+    border-radius: 35px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.profile img:hover {
+
+    border-color: rgb(152, 229, 248);
+
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: -15px;
+    background-color: #bae6f5;
+    box-shadow: 0px 1px 1px 1px hsla(0, 0%, 0%, 0.1);
+    border-radius: 0 0 5px 5px;
+
+    transform: translate(0% , 0%);
+    transition: 0.8s;
+
+
+}
+
+.dropdown ul li:hover {
+    background-color: #0097b2;
+    transition: 0.8s;
+
+    a {
+        color: white;
+    }
+}
+
+.dropdown ul {
+    display: block;
+
+    transition: all 1s ease;
+}
+
+.mid ul li {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.mid ul li:hover .dropdown {
+    display: block;
+
+}
+
+.dropdown ul li {
+    padding: 10px;
+
+
+}
+
+.dropdown ul li a {
+    padding: 10px;
+
+
+}
+@media screen and (max-width: 700px){
+    
+    .mid{
+        display:none;
+    }
+    .navMenu{
+
+    }
+ }
+
+ @media screen and (max-width: 1000px){
+    
+    .mid{
+        display:none;
+    }
+    
+ }

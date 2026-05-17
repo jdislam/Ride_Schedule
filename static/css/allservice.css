@@ -1,0 +1,75 @@
+
+
+.allServiceMain {
+
+    position: absolute;
+   top:18vh;
+   align-items: center;
+   
+   display: flex;
+   left:20%;
+  
+  width: 60%;
+  height: 70vh;
+  
+  padding: var(--p-1-5);
+  
+  z-index: -1;
+
+    
+    /* justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 50px; */
+
+    /* border-width: 2px;
+    border-style: double;
+    border-color: blue; */
+}
+.btnService {
+    background: #2ec3de;
+    color: black;
+    border: none;
+    width:100%;
+    height:18%;
+    padding: 20px 30px;
+    border-radius: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items:center;
+    gap: 10px;
+    margin: 20px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 25px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    padding-left:3%;
+
+    transform: translate(0% , 0%);
+    transition: 0.7s;
+    
+}
+.btnService:hover {
+    background: #007bb5;
+    width:102%;
+    height:23%;
+    font-size: 25px;
+    color:white;
+    
+    
+}
+
+.schedule-options,
+.delivery-options{
+    padding:70px;
+    display: block;
+    
+    width:50%;
+    height: 100%;
+
+    /* border-width: 2px;
+    border-style: double;
+    border-color: rgb(255, 0, 55); */
+
+}

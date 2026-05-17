@@ -1,0 +1,245 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+
+}
+.imagediv {
+   position: absolute;
+   height: 100%;
+   width: 100%;
+   z-index: -99;
+   pointer-events: none;
+   background-color: #fff;
+   
+}
+
+body{
+   background-color: #88d8f0;
+
+}
+.base-body{
+   overflow-x: hidden;
+}
+.home-main{
+   display: block;
+   position:absolute;
+   width: 30%;
+   height: 50%;
+   
+   left:8%;
+   top:20vh;
+   z-index: -1;
+}
+
+.button {
+   position: absolute;
+  background-color: #10182F;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  padding-left:10%;
+  padding-right:12%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 25px;
+  left:20%;
+  margin-top:10px;
+
+}
+.button:hover{
+  background-color: #2fb2c9;
+}
+
+.greenButton {
+   border: none;
+   background-color: #64d655;
+   color: white;
+   padding: 10px ;
+   padding-left: 20px;
+   padding-right: 20px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   cursor: pointer;
+   border-radius: 25px;
+  
+}
+
+.blueButton {
+   border: none;
+   background-color: #2289c5;
+   color: white;
+   padding: 10px ;
+   padding-left: 20px;
+   padding-right: 20px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   cursor: pointer;
+   border-radius: 25px;
+  
+}
+.redButton{
+   border: none;
+   background-color: #e61d1d;
+   color: white;
+   padding: 10px ;
+   padding-left: 20px;
+   padding-right: 20px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   cursor: pointer;
+   border-radius: 25px;
+}
+.greenButton:hover , .redButton:hover , .blueButton:hover{
+   background-color: #eb923e;
+   color: black;
+}
+
+.form-control-field{
+   
+   border-radius: 4px;
+   font-size: 20px;
+   padding-left:10px;
+   border-width: 1px;
+   width: 95%;
+   margin-bottom: 5px;
+   
+
+}
+.text-label{
+   font-size: 14px;
+   color:#3c3d3d;
+}
+.from-field{
+   
+   width: 100px;
+}
+.main-form-box{
+   display:block;
+   position: absolute;
+   border-style: solid;
+   border-color:#00bdd6;
+   border-radius: 20px;
+   border-width: 3px;
+   margin-left: 40%;
+   margin-top: 5%;
+   min-height: 20vh;
+   min-width: 40vh;
+   padding:40px;
+   background-color: white;
+   z-index:-1;
+}
+.field-box{
+   display: block;
+   width: 100%;
+   
+   
+   border-radius: 20px;
+   border-width: 1px;
+   font-size: 20px;
+   
+   
+}
+
+.messageBox{
+   display:block;
+   position:absolute;
+   min-height: 20vh;
+   min-width: 40%;
+   border-style: solid;
+   border-width: 3px;
+   border-color: #09B3E4;
+   border-radius: 20px;
+   margin-top: 20vh;
+   margin-left:30%;
+   margin-right: 30%;
+   background-color: white;
+   font-size: 18px;
+
+}
+.messageBox .messageTitle{
+   margin-top: 15px;
+   margin-bottom: 15px;
+   width: 100%;
+   align-content: center;
+   padding:12px;
+
+}
+.messageTitle h1{
+   text-align: center;
+   text-decoration: none;
+   padding:12px;
+}
+.messageButton{
+   display: block;
+   margin-top: 25px;
+   margin-bottom: 30px;
+   text-align: center;
+   bottom:20px;
+}
+.messageButton .mbutton{
+   background-color: #0491aa;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 25px;
+
+}
+
+.messagecart{
+   text-align: center;
+   padding:12px;
+
+}
+.messagecart1{
+   padding-left: 10px;
+   padding:12px;
+}
+
+
+@media screen and (max-width: 1280px){
+   
+   .home-main{
+      top:20vh;
+      width:40%;
+      left:10%;
+   }
+   .home-main .image-div img{
+      width: 70%;
+
+   }
+   .button{
+      left:10%;
+   }
+   
+   
+}
+@media screen and (max-width: 700px){
+   .imagediv{
+      display:none;
+      background-color: #00bdd6;
+   }
+   .home-main{
+      top:30vh;
+      width:70%;
+   }
+   .home-main .image-div img{
+      width: 100%;
+
+   }
+   .button{
+      left:11%;
+   }
+   
+   
+}
+
