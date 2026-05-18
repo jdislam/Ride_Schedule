@@ -1,0 +1,101 @@
+{% extends "../base/base.html" %}
+{% load static %}
+{% block content %}
+<div class="imagediv">
+    <img src="{%  static 'image/background/bg3.png' %}" height="100%" width="100%" alt="bg">
+</div>
+<div class="containerSchedule">
+      <div class="scheduleContainer">
+         <div class="form"> 
+            <form action="{% url 'weeklySchedule' %}" method="POST">
+            {% csrf_token %}
+               
+               <div>
+                  <span>Set your Ride location</span>
+               </div>
+               <div class="inputlocation">
+                  <i class="fa fa-location"></i>
+                  <input type="text" id="locationL" name="picklocation" placeholder="Enter location">           
+               </div>
+
+               <div class="inputlocation">
+                  <i class="fa fa-location"></i>
+                  <input type="text" id="locationL" name="droplocation" placeholder="Enter destination">
+                 
+               </div>
+               <div>
+                  <span>Set your Ride Timing</span>
+               </div>
+               <div class="inputtime">
+                    <select id="timeL" name="startTime" >
+                        <option value="1:00 AM">1:00 AM</option>
+                        <option value="2:00 AM">2:00 AM</option>
+                        <option value="3:00 AM">3:00 AM</option>
+                        <option value="4:00 AM">4:00 AM</option>
+                        <option value="5:00 AM">5:00 AM</option>
+                        <option value="6:00 AM">6:00 AM</option>
+                        <option value="7:00 AM">7:00 AM</option>
+                        <option value="8:00 AM">8:00 AM</option>
+                        <option value="9:00 AM">9:00 AM</option>
+                        <option value="10:00 AM">10:00 AM</option>
+                        <option value="11:00 AM">11:00 AM</option>
+                        <option value="12:00 AM">12:00 AM</option>
+                        <option value="1:00 AM">1:00 PM</option>
+                        <option value="2:00 AM">2:00 PM</option>
+                        <option value="3:00 AM">3:00 PM</option>
+                        <option value="4:00 AM">4:00 PM</option>
+                        <option value="5:00 AM">5:00 PM</option>
+                        <option value="6:00 AM">6:00 PM</option>
+                        <option value="7:00 AM">7:00 PM</option>
+                        <option value="8:00 AM">8:00 PM</option>
+                        <option value="9:00 AM">9:00 PM</option>
+                        <option value="10:00 AM">10:00 PM</option>
+                        <option value="11:00 AM">11:00 PM</option>
+                        <option value="12:00 AM">12:00 PM</option>
+                        
+                    </select>
+                  
+                  
+               </div>
+               
+               <div>
+                  <span>Time Duration</span>
+               </div>
+               <div class="inputdate"> 
+                  <input type="date" id="dateL" name="startDate" >
+                  <span> _ </span>
+                  <input type="date" id="dateL" name="endDate">
+                  
+               </div>
+               
+               <div class="inputtime"> 
+                  <input type="text" id="timeL" name="SPrice" placeholder="price">
+                  
+               </div>
+               <div class="weeks">
+                  <input type="checkbox" id="SUN" name="SUN" value="SUN" class='weekCheckbox'>
+                  <label for="SUN" class='weeklabel'>SUN</label>
+                  <input type="checkbox" id="MON" name="MON" value="MON" class='weekCheckbox'>
+                  <label for="MON" class='weeklabel'>MON</label>
+                  <input type="checkbox" id="TUE" name="TUE" value="TUE" class='weekCheckbox'>
+                  <label for="TUE" class='weeklabel'>TUE</label>
+                  <input type="checkbox" id="WED" name="WED" value="WED" class='weekCheckbox'>
+                  <label for="WED" class='weeklabel'>WED</label>
+                  <input type="checkbox" id="THE" name="THE" value="THE" class='weekCheckbox'>
+                  <label for="THE" class='weeklabel'>THU</label>
+                  <input type="checkbox" id="FRI" name="FRI" value="FRI" class='weekCheckbox'>
+                  <label for="FRI" class='weeklabel'>FRI</label>
+                  <input type="checkbox" id="SAT" name="SAT" value="SAT" class='weekCheckbox'>
+                  <label for="SAT" class='weeklabel'>SAT</label>
+               </div>
+
+               <div class="submitBtn"><input value="Submit" type="submit"></div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+
+      
+{% include "../base/footer.html" %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "../base/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="imagediv" >
+    
+    <img src="{%  static 'image/background/bg4.jpg' %}" height="100%" width='100%'  alt="bg"  >
+</div>
+
+
+
+
+
+        <section class="allServiceMain" >
+            <div class="schedule-options">
+                <a class="btnService" href="{% url 'dailySchedule' %}">
+                        <img src="{%  static 'image/icon/bike.png' %}" height="60" width="100" alt="">
+                        Daily Schedule
+                </a>
+                <a class="btnService" href="{% url 'weeklySchedule' %}">
+                        <img src="{%  static 'image/icon/bike.png' %}" height="60" width="100" alt="">
+                        Weekly Schedule
+                        
+                </a>
+                <a class="btnService" href="{% url 'monthlySchedule' %}">
+                        <img src="{%  static 'image/icon/bike.png' %}" height="60" width="100" alt="">
+                        Monthly Schedule</a>
+                <a class="btnService" href="{% url 'monthlySchedule' %}">
+                        <img src="{%  static 'image/icon/customize.png' %}" height="60" width="100" alt="">
+                        Custom Schedule</a>
+            </div>
+            <div class="delivery-options" >
+                <a class="btnService" href="{% url 'parcelDelivery' %}">
+                    <img src="{%  static 'image/icon/parcel.png' %}" height="60" width="100" alt="">
+                    Parcel Delivery</a>
+                <a class="btnService" href="{% url 'courier' %}">
+                    <img src="{%  static 'image/icon/Courier.png' %}" height="60" width="100" alt="">
+                    Courier</a>
+                <a class="btnService" href="{% url 'pharmacy' %}">
+                    <img src="{%  static 'image/icon/pharmacy.png' %}" height="60" width="100" alt="">
+                    Pharmacy</a>
+            </div>
+        </section>
+
+
+
+
+
+
+
+{% include "../base/footer.html" %}
+{% endblock %}
