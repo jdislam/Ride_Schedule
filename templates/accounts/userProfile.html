@@ -1,0 +1,179 @@
+{% extends "../base/base.html" %}
+{% load static %}
+{% block content %}
+<div class="userProfileMain">
+
+    <!-- ===== ===== Main-Container ===== ===== -->
+    <div class="container">
+
+        <!-- ===== ===== Header/Navbar ===== ===== -->
+
+
+        <!-- ===== ===== User Main-Profile ===== ===== -->
+        <section class="userProfile card">
+            <div class="profile">
+                {% if request.user.profile.image %}
+                <figure><img src="{{request.user.profile.image.url}}" width="250px" height="250px" alt="logo"></figure>
+                {% else %}
+                <figure><img src="{%  static 'image/icon/profile.png' %}" width="250px" height="250px" alt="logo">
+                </figure>
+                {% endif %}
+
+            </div>
+        </section>
+
+
+        <!-- ===== ===== Work & Skills Section ===== ===== -->
+        <section class="work_skills card">
+
+            <!-- ===== ===== Work Contaienr ===== ===== -->
+            <div class="work">
+                <h1 style="font-size: 175%;">Basic Information</h1>
+                <br>
+                <h1>User Name: {{request.user.username}} </h1>
+
+                <div class="basic_info">
+                    <ul>
+                        <li class="birthday">
+                            <b class="label">Birthday:</b>
+                            {{request.user.profile.birthday}}
+
+                        </li>
+
+                        <li class="sex">
+                            <b class="label">Country:</b>
+                            {{request.user.profile.country}}
+                        </li>
+                    </ul>
+                </div>
+           
+            </div>
+
+
+
+        </section>
+
+
+        <!-- ===== ===== User Details Sections ===== ===== -->
+        <section class="userDetails card">
+            <div class="userName">
+                <h1 class="name">{{request.user.first_name}} {{request.user.last_name}}</h1>
+                <div class="map">
+                    <i class="ri-map-pin-fill ri"></i>
+
+                </div>
+                <br>
+                {% if request.user.profile.isRider %}
+                <p><i class='fa fa-user'></i> Rider</p>
+                {% else %}
+
+                <p><i class='fa fa-bicycle'></i> Driver</p>
+                {% endif %}
+
+            </div>
+
+            <div class="rank">
+                <b>Rating :</b>
+                {{request.user.profile.rate}}/5.0 <s style = "font-size:70%; color:#808080;">by {{request.user.profile.rateCount}} reviews</s>
+                <div style="font-size:140%;">
+                {% with rate=request.user.profile.rate %}
+                {% if rate < 1 %}
+                    ☆☆☆☆☆
+                {% elif rate < 2 %}
+                    ★☆☆☆☆
+                {% elif rate < 3 %}
+                    ★★☆☆☆
+                {% elif rate < 4 %}
+                    ★★★☆☆
+                {% elif rate < 5 %}
+                    ★★★★☆
+                {% else %}
+                    ★★★★★
+                {% endif %}
+                {% endwith %}
+                </div> 
+
+                
+                
+            </div>
+
+            
+            <div style="position: sticky; top: 0; background: #f9f9f9; padding: 15px 20px; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-bottom: 2px solid #ddd;">
+  <ul style="
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    gap: 40px;
+    width: 100%;
+  ">
+    <li style="font-size: 180%; text-align: center; padding: 10px 15px; border-radius: 8px; transition: background 0.3s;">
+      {{request.user.profile.serviceCount}}<br>
+      <span style="font-size: 60%; color: #666;">Service</span>
+    </li>
+    <li style="font-size: 180%; text-align: center; padding: 10px 15px; border-radius: 8px; transition: background 0.3s;">
+      {{request.user.profile.scheduleCount}}<br>
+      <span style="font-size: 60%; color: #666;">Schedule</span>
+    </li>
+    <li style="font-size: 180%; text-align: center; padding: 10px 15px; border-radius: 8px; transition: background 0.3s;">
+      {{request.user.profile.deliveryCount}}<br>
+      <span style="font-size: 60%; color: #666;">delivery</span>
+    </li>
+    <li style="font-size: 180%; text-align: center; padding: 10px 15px; border-radius: 8px; transition: background 0.3s;">
+      {{request.user.profile.fiveStar}}<br>
+      <span style="font-size: 60%; color: #666;">5 star received</span>
+    </li>
+  </ul>
+</div>
+
+
+        </section>
+
+
+        <!-- ===== ===== Timeline & About Sections ===== ===== -->
+        <section class="timeline_about card">
+            <div class="tabs">
+                <ul>
+
+
+                    <li class="about active">
+                        <i class="ri-user-3-fill ri"></i>
+                        <span>About</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contact_Info">
+                <h1 style="font-size: 172%;">Contact Information</h1>
+                <br>
+                <ul>
+                    <li class="phone">
+                        <b>Phone:</b>
+                        {{request.user.profile.phone}}
+                    </li>
+
+                    <li class="address">
+                        <b>Address:</b>
+                        {{request.user.profile.address}}
+                    </li>
+
+                    <li class="email">
+                        <b>E-mail:</b>
+                        {{request.user.email}}
+                    </li>
+
+
+                </ul>
+            </div>
+
+
+        </section>
+    </div>
+
+
+
+
+    {% endblock %}

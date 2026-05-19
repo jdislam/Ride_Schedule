@@ -1,0 +1,119 @@
+{% extends "../base/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="imagediv" >
+    
+    <img src="{%  static 'image/background/bg3.png' %}" height="100%" width='100%'  alt="bg"  >
+</div>
+
+
+<main class="postTable" id="customers_table">
+        <section class="table__header">
+            
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                <img src="{%  static 'image/icon/search.png' %}" alt="">
+            </div>
+            
+        </section>
+        <section class="table__body">
+        {% if user.is_authenticated %}
+            {% if user.profile.isRider %}
+                    <table class="tableBodyPost">
+                        <thead>
+                            <tr>
+                                <th> Driver Name <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Location <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Date <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Day <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Type<span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Price <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> <span class="icon-arrow">&UpArrow;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="tableBodyPostBody">
+
+                        {% for p in schedule %}
+
+                            {% if p.rider_id == request.user.profile %}
+
+
+                            <tr>
+
+                                <td> {{p.driver_id}}</td>
+                                <td>{{p.pickup_from}} - {{p.drop_to}} </td>
+                                <td> {{p.startDate}} to {{p.endDate}} </td>
+                                <td>
+                                    {{p.weeks}}      
+                                </td>
+                                <td> {{p.type_of_schedule}}</strong></td>
+                                <td> <strong> {{p.price}}TK </strong></td>
+                                {% if p.pending %}
+                                    <td><p class="status pending">Pending</p></td>
+                                    <td><a href="{% url 'deleteSchedule' p.id %}" class="redButton">Cancel</a></td>
+                                    <td><a href="{% url 'updateSchedule' p.id %}" class="greenButton">Update</a>
+                                    </td>
+                                {% else %}
+                                    <td><p class="status delivered">Accepted</p></td>
+                                    <td><p class="status cancelled">Cancel</p></td>
+                                    <td><a href="{% url 'completeSchedule' p.id %}" class="blueButton">Completed</a>
+                                        
+                                    </td>
+                                {% endif %}
+                                
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            {% else %}
+                    <table class="tableBodyPost">
+                        <thead>
+                            <tr>
+                                <th> Rider Name <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Location <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Date <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Day <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Type<span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Price <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody class="tableBodyPostBody">
+
+                        {% for p in schedule %}
+
+                            {% if p.driver_id == request.user.username %}
+
+
+                            <tr>
+
+                                <td> {{p.rider_id}}</td>
+                                <td>{{p.pickup_from}} - {{p.drop_to}} </td>
+                                <td> {{p.startDate}} to {{p.endDate}} </td>
+                                <td>
+                                    {{p.weeks}}      
+                                </td>
+                                <td> {{p.type_of_schedule}}</strong></td>
+                                <td> <strong> {{p.price}}TK </strong></td>
+                                
+                                
+                                
+                                <td><a href="{% url 'deleteSchedule' p.id %}" class="redButton">Cancel</a></td>
+                                
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            {% endif %}
+        {% endif %}
+        </section>
+</main>
+<script src="{% static 'javaScript/script.js' %}"></script>
+
+
+{% endblock %}

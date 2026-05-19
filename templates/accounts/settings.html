@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load widget_tweaks %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f9f9f9;
+      color: #1f2937;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 260px;
+      background-color:rgb(0, 0, 0);
+      color: white;
+      padding: 30px 20px;
+      box-shadow: 2px 0 8px rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #cbd5e1;
+      padding: 12px 18px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color:rgb(63, 63, 63);
+      color: white;
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .content h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #1e40af;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      display: none;
+    }
+
+    .card.active {
+      display: block;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: #1f2937;
+    }
+
+    .card p {
+      margin: 0 0 15px;
+      color: #6b7280;
+    }
+
+    .card a,
+    .card button {
+      background-color: #3b82f6;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: background-color 0.3s;
+    }
+
+    .card a:hover,
+    .card button:hover {
+      background-color: #2563eb;
+    }
+
+    .btn-danger {
+      background-color: #ef4444 !important;
+    }
+
+    .btn-danger:hover {
+      background-color: #dc2626 !important;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 25px 20px;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+    .form-control {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .sidebar a {
+        flex: 1 1 45%;
+        justify-content: center;
+        margin: 5px;
+      }
+
+      .content {
+        padding: 20px;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Settings</h2>
+      <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+      <a onclick="showCard('profile')" class ="active"><i class="fas fa-user"></i> Profile</a>
+      <a onclick="showCard('password')"><i class="fas fa-lock"></i> Password</a>
+      <a onclick="showCard('delete')"><i class="fas fa-trash"></i> Delete Account</a>
+    </div>
+    <div class="content">
+      <h1>Welcome to Settings</h1>
+
+      <div id="profile" class="card active">
+  <h3>Update your profile information</h3>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-grid">
+      <div>
+        <label>First Name:</label>
+        {% render_field formU.first_name placeholder="First name" class="form-control" %}
+      </div>
+      <div>
+        <label>Last Name:</label>
+        {% render_field formU.last_name placeholder="Last name" class="form-control" %}
+      </div>
+      <div>
+        <label>Email:</label>
+        {% render_field formU.email placeholder="Email" class="form-control" %}
+      </div>
+      <div>
+        <label>Phone Number:</label>
+        {% render_field formP.phone placeholder="Phone number" class="form-control" %}
+      </div>
+      <div>
+        <label>Country:</label>
+        {% render_field formP.country placeholder="Country" class="form-control" %}
+      </div>
+      <div>
+        <label>Birthdate:</label>
+        {% render_field formP.birthday class="form-control" %}
+      </div>
+      <div class="full-width">
+        <label>Address:</label>
+        {% render_field formP.address placeholder="Address" class="form-control" %}
+      </div>
+      <div class="full-width">
+        <label>Profile Image:</label>
+        {% if formP.instance.image %}
+          <div style="margin-bottom: 10px;">
+            <img src="{{ formP.instance.image.url }}" alt="Current Image" style="max-width: 150px; border-radius: 8px; border: 1px solid #ccc;">
+          </div>
+        {% endif %}
+        {% render_field formP.image class="form-control" %}
+      </div>
+    </div>
+    <button type="submit" style="margin-top: 20px;">Save</button>
+  </form>
+</div>
+
+      <div id="password" class="card">
+        <h3>Change your account password</h3>
+        {% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <form action="{% url 'changePassword' %}" method="POST">
+          {% csrf_token %}
+          <label>Username:</label>
+          <input type="text" value="{{ request.user.username }}" disabled>
+
+          {{ form.as_p }}
+
+          <button type="submit">Save</button>
+        </form>
+      </div>
+
+      <div id="delete" class="card">
+        <h3>Delete your account</h3>
+        <p>Danger zone: permanently remove all your data and account.</p>
+        <form action="{% url 'deleteAccount' %}" method="POST" onsubmit="return confirm('Are you sure you want to delete your account?');">
+          {% csrf_token %}
+          <button type="submit" class="btn-danger">Delete Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showCard(id) {
+      document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+      event.target.closest('a').classList.add('active');
+    }
+  </script>
+</body>
+</html>

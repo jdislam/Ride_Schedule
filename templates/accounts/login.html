@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in & Sign up Form</title>
+    <link rel="stylesheet" href="style.css" />
+    
+    <link rel = "stylesheet" href = "{% static 'css/login.css' %}">
+  </head>
+  <body class="logInBody">
+    <main class="logInMain">
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+            <form  autocomplete="off" class="sign-in-form" action="{% url 'loginUser' %}" id="LogInForm" method="POST">
+            {% csrf_token %}
+              <div class="logo">
+                <img  src="{%  static 'loginImg/logo.png' %}" alt="logo">
+                
+                <h4>Ride Schedule</h4>
+              </div>
+
+              <div class="heading">
+                <h2>Welcome Back</h2>
+                <h6>Not registred yet?</h6>
+                <a href="#" class="toggle">Sign up</a>
+              </div>
+
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    id="username" 
+                    name="username" 
+                    
+                    required
+                  />
+                  <label class="labelText">Name</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    id="password" 
+                    name="password" 
+                    
+                    required
+                  />
+                  <label class="labelText">Password</label>
+                </div>
+
+                <input type="submit" value="Sign In" class="sign-btn" />
+
+                <p class="displayText">
+                  Forgotten your password or you login datails?
+                  <a href="#">Get help</a> signing in
+                </p>
+              </div>
+            </form>
+
+            <form autocomplete="off" class="sign-up-form" action="{% url 'createRider' %}" method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="logo">
+                <img  src="{%  static 'loginImg/logo.png' %}" alt="logo">
+                <h4>Ride Schedule</h4>
+              </div>
+
+              <div class="heading">
+                <h2>Get Started</h2>
+                <h6>Already have an account?</h6>
+                <a href="#" class="toggle">Sign in</a>
+              </div>
+              
+              <div class="actual-form">
+                
+                <div class="input-wrap">
+                    <input type="radio" class="btn-check" name="isRider" id="isRider" value="True"  checked>
+                    <label class="btn" for="isRider">Rider</label>
+                    <input type="radio" class="btn-check" name="isRider" id="isDriver" value="False" >
+                    <label class="btn" for="isDriver">Driver</label>
+                </div>
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    id="username" name="usernameSignUp" 
+                    required
+                  />
+                  <label class="labelText">Name</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="email"
+                    class="input-field"
+                    autocomplete="off"
+                    id="username" name="emailSignUp" 
+                    required
+                  />
+                  <label class="labelText">Email</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    id="password" name="passwordSignUp" 
+                    required
+                  />
+                  <label class="labelText">Password</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    id="password" name="cpasswordSignUp" 
+                    required
+                  />
+                  <label class="labelText">Confirm Password</label>
+                </div>
+
+                <input type="submit" value="Sign Up" class="sign-btn" />
+
+                <p class="displayText">
+                  By signing up, I agree to the
+                  <a href="#">Terms of Services</a> and
+                  <a href="#">Privacy Policy</a>
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <div class="carousel">
+            <div class="images-wrapper">
+              <img  src="{%  static 'loginImg/image1.png' %}" class="image img-1 show" alt="">
+              <img  src="{%  static 'loginImg/image2.png' %}" class="image img-2" alt="">
+              <img  src="{%  static 'loginImg/image3.png' %}" class="image img-3" alt="">
+              
+            </div>
+
+            <div class="text-slider">
+              <div class="text-wrap">
+                <div class="text-group">
+                  <h2>Create Custom Schedule</h2>
+                  <h2>Safe and Fast travel</h2>
+                  <h2>Invite your friends and Family</h2>
+                </div>
+              </div>
+
+              <div class="bullets">
+                <span class="active" data-value="1"></span>
+                <span data-value="2"></span>
+                <span data-value="3"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Javascript file -->
+    <script type="text/javascript">
+        const inputs = document.querySelectorAll(".input-field");
+        const toggle_btn = document.querySelectorAll(".toggle");
+        const main = document.querySelector("main");
+        const bullets = document.querySelectorAll(".bullets span");
+        const images = document.querySelectorAll(".image");
+
+        inputs.forEach((inp) => {
+          inp.addEventListener("focus", () => {
+            inp.classList.add("active");
+          });
+          inp.addEventListener("blur", () => {
+            if (inp.value != "") return;
+            inp.classList.remove("active");
+          });
+        });
+
+        toggle_btn.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            main.classList.toggle("sign-up-mode");
+          });
+        });
+
+        function moveSlider() {
+          let index = this.dataset.value;
+
+          let currentImage = document.querySelector(`.img-${index}`);
+          images.forEach((img) => img.classList.remove("show"));
+          currentImage.classList.add("show");
+
+          const textSlider = document.querySelector(".text-group");
+          textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+
+          bullets.forEach((bull) => bull.classList.remove("active"));
+          this.classList.add("active");
+        }
+
+        bullets.forEach((bullet) => {
+          bullet.addEventListener("click", moveSlider);
+        });
+
+
+
+    </script>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+{% extends "../base/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="imagediv" >
+    
+    <img src="{%  static 'image/background/bg3.png' %}" height="100%" width='100%'  alt="bg"  >
+</div>
+
+
+<main class="postTable" id="customers_table">
+        <section class="table__header">
+            
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                <img src="{%  static 'image/icon/search.png' %}" alt="">
+            </div>
+            
+        </section>
+        <section class="table__body">
+        {% if user.is_authenticated %}
+            {% if user.profile.isRider %}
+                    <table class="tableBodyPost">
+                        <thead>
+                            <tr>
+                                <th> Time <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Driver Name <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Location <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Date <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Pick UP time <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Type<span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Price <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> <a href="{% url 'deleteAllHistory' %}" class="redButton">Delete All</a></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody class="tableBodyPostBody">
+
+                        {% for p in history %}
+
+                            
+
+                            {% if p.status == "canceled" %}
+                            <tr style="background:#d99393;">
+                            {% elif p.status == "accepted" %}
+                            <tr style="background:#b4f0a5;">
+                            {% else %}
+                            <tr>
+                            {% endif %}
+
+                                <td> {{p.time}}</td>
+                                <td>{{p.driver}} </td>
+                                <td> {{p.location}} </td>
+                                <td>
+                                    {{p.date}}      
+                                </td>
+                                <td>{{p.pickUp}}
+                                <td> {{p.type}}</strong></td>
+                                <td> <strong> {{p.price}}TK </strong></td>
+                                
+                                <td>{{p.status}}</td>
+                                <td><a href="{% url 'deleteHistory' p.id %}" class="redButton">delete</a></td>
+                                
+                                
+                            </tr>
+
+                            
+                            
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            {% else %}
+                    <table class="tableBodyPost">
+                        <thead>
+                            <tr>
+                                
+                                <th> Time <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Customer Name <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Location <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Date <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Pick UP time <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Type<span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Price <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> <a href="{% url 'deleteAllHistory' %}" class="redButton">Delete All</a></th>
+                                
+                            
+                            </tr>
+                        </thead>
+                        <tbody class="tableBodyPostBody">
+
+                        {% for p in history %}
+
+    
+                            {% if p.status == "canceled" %}
+                            <tr style="background:#d99393;">
+                            {% elif p.status == "accepted" %}
+                            <tr style="background:#b4f0a5;">
+                            {% else %}
+                            <tr>
+                            {% endif %}
+
+                                <td> {{p.time}}</td>
+                                <td>{{p.rider}} </td>
+                                <td> {{p.location}} </td>
+                                <td>
+                                    {{p.date}}      
+                                </td>
+                                <td>{{p.pickUp}}
+                                <td> {{p.type}}</strong></td>
+                                <td> <strong> {{p.price}}TK </strong></td>
+                                
+                                <td>{{p.status}}</td>
+                                <td><a href="{% url 'deleteHistory' p.id %}" class="redButton">delete</a></td>
+                                
+                                
+                            </tr>
+                            
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            {% endif %}
+        {% endif %}
+        </section>
+</main>
+<script src="{% static 'javaScript/script.js' %}"></script>
+
+
+{% endblock %}
