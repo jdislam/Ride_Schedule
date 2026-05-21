@@ -1,0 +1,125 @@
+{% extends "../base/base.html" %}
+{% load static %}
+{% block content %}
+{% comment %} <div class = "messageBox">
+        <div class = "messageTitle"><h1><b>{{title}}</b></h1>
+        </div>
+        <div class = "messagecart">{{m1}}</div>
+        <div class = "messagecart">{{m2}}</div>
+        <div class = "messagecart">{{m3}}</div>
+        <div class = "messagecart">{{m4}}</div>
+
+        
+        <div class = "messagecart1">{{text2}}</div>
+        <form method="POST">
+        {% csrf_token %}     
+            <div class = "messageButton">
+                <input type="submit" name="submit" value="Completed" class="greenButton">
+                <a href="{% url url1 text1 schedule %}" class = "blueButton">Rating</a> 
+                <a href="{{url2}}" class = "redButton">Cancel</a>             
+            </div>
+        </form>
+        
+    </div>
+{% endblock %} {% endcomment %}
+
+
+<style>
+    .messageWrapper {
+        min-height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        padding: 20px;
+    }
+
+    .messageBox {
+        width: 100%;
+        max-width: 600px;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .messageTitle h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .messagecart, .messagecart1 {
+        font-size: 16px;
+        color: #555;
+        margin: 10px 0;
+    }
+
+    .messageButton {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+    }
+
+    .greenButton, .blueButton, .redButton {
+        padding: 12px 24px;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 25px;
+        text-decoration: none;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .greenButton {
+        background-color: #28a745;
+    }
+    .greenButton:hover {
+        background-color:rgb(6, 165, 157);
+    }
+
+    .blueButton {
+        background-color: #007bff;
+    }
+    .blueButton:hover {
+        background-color:rgb(6, 165, 157);
+    }
+
+    .redButton {
+        background-color: #dc3545;
+    }
+    .redButton:hover {
+        background-color:rgb(6, 165, 157);
+    }
+</style>
+
+<div class="messageWrapper">
+    <div class="messageBox">
+        <div class="messageTitle">
+            <h1><b>{{ title }}</b></h1>
+        </div>
+
+        {% if m1 %}<div class="messagecart">{{ m1 }}</div>{% endif %}
+        {% if m2 %}<div class="messagecart">{{ m2 }}</div>{% endif %}
+        {% if m3 %}<div class="messagecart">{{ m3 }}</div>{% endif %}
+        {% if m4 %}<div class="messagecart">{{ m4 }}</div>{% endif %}
+
+        {% if text2 %}<div class="messagecart1">{{ text2 }}</div>{% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="messageButton">
+                <input type="submit" name="submit" value="Completed" class="greenButton">
+                <a href="{% url url1 text1 schedule %}" class="blueButton">Rating</a>
+                <a href="{{ url2 }}" class="redButton">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

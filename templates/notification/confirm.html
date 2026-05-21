@@ -1,0 +1,111 @@
+{% extends "../base/base.html" %}
+{% load static %}
+{% block content %}
+{% comment %} <div class = "messageBox">
+        <div class = "messageTitle"><h1><b>{{title}}</b></h1>
+        </div>
+        <div class = "messagecart">{{m1}}</div>
+        <div class = "messagecart">{{m2}}</div>
+        <div class = "messagecart">{{m3}}</div>
+        <div class = "messagecart">{{m4}}</div>
+
+        <div class = "messagecart1">{{text1}}</div>
+        <div class = "messagecart1">{{text2}}</div>
+        <form method="POST">
+        {% csrf_token %}     
+            <div class = "messageButton">
+                <input type="submit" name="submit" value="Yes" class="mbutton">
+                <a href="{{url}}" class = "mbutton">No</a>              
+            </div>
+        </form>
+        
+    </div>
+{% endblock %} {% endcomment %}
+
+
+<style>
+    .messageWrapper {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        padding: 20px;
+    }
+
+    .messageBox {
+        width: 100%;
+        max-width: 600px;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .messageTitle h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .messagecart, .messagecart1 {
+        margin: 10px 0;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .messageButton {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .mbutton {
+        background-color: #00bfa6;
+        color: white;
+        padding: 12px 28px;
+        border-radius: 6px;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .mbutton:hover {
+        background-color: #009e8c;
+    }
+
+    .mbutton:focus {
+        outline: none;
+    }
+</style>
+
+<div class="messageWrapper">
+    <div class="messageBox">
+        <div class="messageTitle">
+            <h1><b>{{ title }}</b></h1>
+        </div>
+
+        {% if m1 %}<div class="messagecart">{{ m1 }}</div>{% endif %}
+        {% if m2 %}<div class="messagecart">{{ m2 }}</div>{% endif %}
+        {% if m3 %}<div class="messagecart">{{ m3 }}</div>{% endif %}
+        {% if m4 %}<div class="messagecart">{{ m4 }}</div>{% endif %}
+
+        {% if text1 %}<div class="messagecart1">{{ text1 }}</div>{% endif %}
+        {% if text2 %}<div class="messagecart1">{{ text2 }}</div>{% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="messageButton">
+                <input type="submit" name="submit" value="Yes" class="mbutton">
+                <a href="{{ url }}" class="mbutton">No</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
