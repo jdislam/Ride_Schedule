@@ -1,0 +1,145 @@
+{% extends "../base/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+
+<style>
+    .profile-wrapper {
+        max-width: 800px;
+        margin: 40px auto;
+        background-color: #f9f9f9;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .profile-wrapper h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+        text-transform: capitalize;
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .form-group {
+        flex: 1 1 48%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group-full {
+        flex: 1 1 100%;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #34495e;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #00bcd4;
+        box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+        outline: none;
+    }
+
+    .form-submit {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .form-submit input[type="submit"] {
+        padding: 12px 30px;
+        background-color: #00bcd4;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .form-submit input[type="submit"]:hover {
+        background-color: #0097a7;
+    }
+
+    @media (max-width: 600px) {
+        .form-group {
+            flex: 1 1 100%;
+        }
+    }
+</style>
+
+<div class="profile-wrapper">
+    <h2>Update Your Profile</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group">
+                <label>First Name</label>
+                {% render_field formU.first_name placeholder="First name" class="form-control" %}
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                {% render_field formU.last_name placeholder="Last name" class="form-control" %}
+            </div>
+            <div class="form-group form-group-full">
+                <label>Email</label>
+                {% render_field formU.email placeholder="Email" class="form-control" %}
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                {% render_field formP.phone placeholder="Phone number" class="form-control" %}
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                {% render_field formP.country placeholder="Country" class="form-control" %}
+            </div>
+            <div class="form-group">
+                <label>Birthdate</label>
+                {% render_field formP.birthday class="form-control" %}
+            </div>
+            <div class="form-group form-group-full">
+                <label>Address</label>
+                {% render_field formP.address placeholder="Address" class="form-control" %}
+            </div>
+            <div class="form-group form-group-full">
+                <label>Profile Image</label>
+
+                {% if formP.instance.image %}
+                    <div style="margin-bottom: 10px;">
+                        <img src="{{ formP.instance.image.url }}" alt="Current Image"
+                         style="max-width: 150px; border-radius: 8px; border: 1px solid #ccc;">
+                    </div>
+                {% endif %}
+
+                {% render_field formP.image class="form-control" %}
+            </div>
+        </div>
+        <div class="form-submit">
+            <input type="submit" value="Save">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

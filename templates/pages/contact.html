@@ -1,0 +1,34 @@
+{% extends "../base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="contact">
+
+            <div class="contactFrom">
+                <form action="https://formspree.io/f/xdoqwdja" method="POST">
+                    <h2><b>Send Message</b></h2>
+                    <div class="inputBox">
+                        <input type="text" name="" required="required">
+                        <span>Full Name</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="" required="required">
+                        <span>Email</span>
+                    </div>
+                    <div class="inputBox">
+                       <textarea required="required"></textarea>
+                        <span>Type your Message...</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" name="" value="send">
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+</section>
+
+{% include "../base/footer.html" %}
+{% endblock %}

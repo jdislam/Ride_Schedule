@@ -1,0 +1,36 @@
+{% extends "../base/base.html" %}
+{% load static %}
+{% block content %}
+<div class="policy-body">
+    <div class="policy-box">
+        <div class="policy-text">
+            <h1><b>How to Join Ride Schedule:</b></h1>
+           <ul style="list-style-type:disc;">
+            <li>Greetings Users,</li>
+            <li>.Go to the Website. </li>
+            <li>.Open the Ride Schedule homepage in your browser.</li>
+            <li>.Click “Get Started” or “Sign Up”
+                You’ll find the “Sign Up” button on the homepage or under the Help section → “How to Join Ride Schedule”.</li>
+             
+        
+             <li>.Choose Your Role
+                Select whether you want to join as a Rider or a Driver.</li>
+         
+            <li>.Fill the Registration Form
+                Enter your name, email, password, and confirm password..</li>
+         
+            <li>.Submit and Create Account
+                Click the Sign Up button to create your account.</li>
+        
+             <li>.Login and Start Using.</li>
+            
+            </ul>
+        </div>
+        <h4>I got it.</h4>
+        <div class="buttons">
+            <a href="{% url 'home' %}" class="btn green-btn">Yes</a>
+        </div>
+       
+    </div>
+</div>
+{% endblock %}
