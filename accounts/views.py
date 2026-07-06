@@ -273,6 +273,3 @@ def rateDriver(request,id,scheduleid):
 
 
 
-def ai(request):
-     return render (request, template_name='accounts/gemini.html')
-

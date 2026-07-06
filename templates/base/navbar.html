@@ -13,6 +13,7 @@
                             {% if user.is_authenticated %} 
                                 {% if request.user.profile.isRider %}
                                     <li><a href="{% url 'dailySchedule' %}">Daily Schedule</a></li>
+
                                     <li><a href="{% url 'weeklySchedule' %}">Weekly Schedule</a></li>
                                     <li><a href="{% url 'monthlySchedule' %}">Monthly Schedule</a></li><hr>
                                     <li><a href="{% url 'allService' %}">Others service</a></li>
@@ -31,7 +32,6 @@
                     </div>
 
                 </li>
-
                 <li><a href="#" class="fix">Help <i class="fas fa-angle-down" style="font-size:12px;"></i> </a>
                     <div class="dropdown" >
                         <ul >
